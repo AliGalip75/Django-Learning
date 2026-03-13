@@ -11,13 +11,30 @@
 }
 
 .myclass{
-    background-image: url('/static/img/sunset.jpg');background-size: cover; 
-    background-position: center;
-    height: 873px; 
+    height: 100vh; /* Full viewport height */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Modern gradient background */
     color: white; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
     text-align: center; 
+    position: relative;
 }
 
+.myclass h1 {
+    font-size: 4rem; /* Larger font size */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+    margin: 0;
+    user-select: none;
+}
+
+/* Add some animation for a modern touch */
+.myclass h1 {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -14,8 +14,8 @@ def post_list(request):
     page = request.GET.get('page',1) #sayfadan 'page' değeri geliyorsa al, gelmiyorsa 1 al. bu satır şuan hangi sayfada olduğumuzu alır.
     page_obj = paginator.get_page(page)
     
-    print(page_obj.paginator.num_pages) #postlar toplam kaç sayfaya dağıtıldı?
-    print(page_obj.paginator.count) #toplam kaç tane post var?
+    '''print(page_obj.paginator.num_pages) #postlar toplam kaç sayfaya dağitildi?
+    print(page_obj.paginator.count) #toplam kaç tane post var?'''
     
     return render(request, 'blog/post_list.html', {'page_obj':page_obj, 'categories':categories})
 
@@ -60,7 +60,7 @@ def is_admin(user):
         return False
     
 
-@user_passes_test(is_admin) # parametre true ise method çalışır, değilse çalışmaz ve login sayfasına yönlendirir.
+@user_passes_test(is_admin, login_url='/accounts/login') # parametre true ise method çalışır, değilse çalışmaz ve login sayfasına yönlendirir.
 def add_post(request):   
     if request.method == 'POST':
         form = CreatePostForm(request.POST, request.FILES)
@@ -73,7 +73,7 @@ def add_post(request):
 
 
 
-@user_passes_test(is_admin)
+@user_passes_test(is_admin, login_url='/accounts/login')
 def post_operations(request):
     posts = Post.objects.all()
     return render(request, 'blog/post_op.html', {'posts':posts})

@@ -28,7 +28,7 @@
                 <div class="row">
                     {% for post in page_obj.object_list %}
                         {% if post.is_active %}
-                            <div class="col-sm-4 mb-5">
+                            <div class="col-md-4 col-12 mb-5">
                                 <div class="card" style="width: 25rem;">
                                     <img src="{{ post.image.url }}" class="card-img-top" height="220">
                                     <div class="card-body">
